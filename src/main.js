@@ -12,7 +12,7 @@ function init(i18n) {
     store,
     router,
     render: h => h(App)
-  });
+  }).$mount('#app');
 }
 
 // 获取当前app语言参数，并初始化国际化和渲染页面。开发时，mock数据默认返回中文。

@@ -3,9 +3,17 @@
 * 采用vue模板
 * 
 
-# 使用VUE模板开发
------------------------------
+### tips
 
+* 底部导航栏本应采用子路由的形式开发，但由于没调通，所以在每个页面中添加了导航栏组件。
+
+
+
+# 以下是wecode工具自动生成的
+
+------------------------------------------
+
+# 使用VUE模板开发
 ### 前言
 
 更多VUE开发技巧和学习指南可参考[VUE 官网](https://cn.vuejs.org/index.html)。
@@ -46,7 +54,6 @@ VUE语法高亮插件体积较大，目前We码开发者工具未内置该插件
 + 第一步，先通过浏览器，下载插件[vetur](https://marketplace.visualstudio.com/_apis/public/gallery/publishers/octref/vsextensions/vetur/0.24.0/vspackage)到本地。
 
 + 第二步，通过IDE【菜单栏】-【个性化】-【安装插件】，加载下载好文件： `octref.vetur-0.24.0.vsix`。
-  
 > 由于插件加载过程，会去安装一些依赖，时间可能有点久，请耐心等待，直至提示安装完成。
 
 ### 工程目录
