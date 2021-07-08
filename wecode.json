@@ -1,6 +1,8 @@
 {
-  "sdkName": "wecode-vue",
+  "sdkName": "wecode-aui",
   "sdkVersion": "1.0.0",
+  "ejected": false,
   "eslint": true,
+  "port": "8081",
   "projectName": "newProject"
 }

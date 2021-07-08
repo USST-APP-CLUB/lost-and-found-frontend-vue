@@ -1,7 +1,7 @@
 <template>
-  <div  class="App">
+  <div class="App">
     <div class="App-header"></div>
-    <h1 class="App-title">{{ $t('common.appTitle') }}</h1>
+    <h1 class="App-title">{{ $t('common.title') }}</h1>
     <p class="App-intro">
       {{ $t('home.edit') }}
       <code>/src/views/Home.vue</code>
@@ -9,40 +9,24 @@
     </p>
     <router-link to="/vueTemplateIntro" class="desc-link">{{
       $t('home.wlkVueTemplateIntro')
-    }}</router-link> 
-    <!-- <div >{{ deviceInfo }}</div> -->
-
-    <!-- 【1】↓↓↓本应该用嵌套子路由实现tabbar对页签的切换，但迟迟调不通，所以只能暂时这样写 -->
-    <found-page v-show="true"/>
-    <lost-page v-show="false"/>
-    <my-page v-show="false"/>
-    <!-- 【1】↑↑↑本应该用嵌套子路由实现tabbar对页签的切换，但迟迟调不通，所以只能暂时这样写 -->
-    <tab-bar />
+    }}</router-link>
+    <div style="display:none;">{{ deviceInfo }}</div>
+    <aui-alert description="type 为默认值 info"></aui-alert>
+    <aui-badge :value=2 :max=1>我的待办</aui-badge>
+    <aui-button title="默认按钮">默认按钮</aui-button>
+    <aui-input placeholder="请输入内容"></aui-input>
   </div>
-  
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import TabBar from '../components/tabbar/Tabbar';
-import LostPage from '../components/tabbar/LostPage';
-import FoundPage from '../components/tabbar/FoundPage';
-import MyPage from '../components/tabbar/MyPage';
-// import IndexPage from '../components/tabbar/IndexPage';
 
 export default {
-  name: 'home',
-  components: {
-    TabBar,
-    LostPage,
-    FoundPage,
-    MyPage,
-  },
   data() {
     return {};
   },
   created() {
-    window.HWH5.navTitle({ title: this.$i18n.t('common.title') });
+    window.HWH5.navTitle({ title: 'Vue 模板' });
     this.getDeviceInfo();
   },
   computed: {
@@ -57,19 +41,6 @@ export default {
 <style lang="less" scoped>
 .App {
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  // [1] 下面代码实现了导航栏固定在底部的效果 https://blog.csdn.net/hb9278/article/details/96433386
-  position:absolute;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
-
-  .App-tab-bar{
-    justify-self: flex-end;
-  }
-  // [1] ends
 
   .App-logo {
     margin: 20px 0;

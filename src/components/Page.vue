@@ -4,6 +4,7 @@
       <h1 class="page__title">{{ title }}</h1>
       <p class="page__desc">{{ subTitle }}</p>
     </div>
+    <div>aui test</div>
     <div :class="`page__bd ${spacing ? 'page__bd_spacing' : ''}`">
       <slot name="body"></slot>
     </div>

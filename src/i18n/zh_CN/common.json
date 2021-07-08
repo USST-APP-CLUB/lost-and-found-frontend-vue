@@ -1,6 +1,5 @@
 {
-  "appName": "寻物——失物招领",
-  "welcome": "愿物能归原主",
-  "appTitle": "寻物",
-  "title": "寻物"
+  "appName": "微码示例程序",
+  "welcome": "你好，世界!",
+  "title": "Vue 模板!"
 }

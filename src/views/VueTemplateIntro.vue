@@ -1,5 +1,5 @@
 <template>
-  <div class="weui-article pr10">
+  <div class="weui-article">
     <h1>Wecode Vue 模板说明</h1>
     <ul class="advantage">
       <li>基于Vue-cli3.0进行制作。</li>
@@ -8,14 +8,6 @@
     </ul>
   </div>
 </template>
-<script>
-  import '../common/css/index.less';
-  export default {
-    data() {
-      return {};
-    }
-  };
-</script>
 <style lang="less" scoped>
 .advantage {
   list-style: circle;

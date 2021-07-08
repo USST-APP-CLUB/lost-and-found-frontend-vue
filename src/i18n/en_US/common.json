@@ -1,6 +1,5 @@
 {
-  "appName": "LostAndFound",
-  "welcome": "LostAndFound",
-  "appTitle": "LostAndFound",
-  "title": "LostAndFound"
+  "appName": "React App",
+  "welcome": "Hello World!",
+  "title": "Vue"
 }
