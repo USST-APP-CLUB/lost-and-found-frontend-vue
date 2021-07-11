@@ -2,7 +2,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from '@/views/Home.vue';
+import LostPage from '@/components/tabbar/LostPage.vue'
+import FoundPage from '@/components/tabbar/FoundPage.vue'
+import MyPage from '@/components/tabbar/MyPage.vue'
+import FirstPage from '@/components/tabbar/FirstPage.vue'
+import globalConsts from '@/consts/globalConsts.js'
 
+Vue.use(globalConsts)
 Vue.use(VueRouter);
 
 /**
@@ -24,7 +30,33 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    redirect: '/first',
+    component: Home,
+    // meta: {
+    //   keepAlive: true // 需要被缓存
+    // },
+    children: [
+      {
+        path: '/first',
+        name: 'FirstPage',
+        component: FirstPage 
+      },
+      {
+        path: '/lost',
+        name: 'LostPage',
+        component: LostPage 
+      },
+      {
+        path: '/found',
+        name: 'FoundPage',
+        component: FoundPage 
+      },
+      {
+        path: '/me',
+        name: 'MyPage',
+        component: MyPage 
+      }
+    ]
   },
   {
     path: '/vueTemplateIntro',
