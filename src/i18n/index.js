@@ -1,7 +1,6 @@
 // dont remove
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import locale from '@aurora/vue-locale';
 
 Vue.use(VueI18n);
 
@@ -14,10 +13,11 @@ function importAll(r) {
 }
 
 const messages = {
-  'en_US': importAll(require.context('./en_US', true, /.json$/)),
-  'zh_CN': importAll(require.context('./zh_CN', true, /.json$/))
+  enUS: importAll(require.context('./en_US', true, /.json$/)),
+  zhCN: importAll(require.context('./zh_CN', true, /.json$/))
 };
 
-const i18n = locale.initI18n({ VueI18n, messages })
-
+const i18n = new VueI18n({
+  messages
+});
 export default i18n;
