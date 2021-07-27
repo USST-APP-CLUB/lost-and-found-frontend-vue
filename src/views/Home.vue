@@ -1,97 +1,158 @@
 <template>
   <div class="App">
-    <div class="App-header"></div>
-    <h1 class="App-title">{{ $t('common.appTitle') }}</h1>
-    <p class="App-intro">
-      {{ $t('home.edit') }}
-      <code>/src/views/Home.vue</code>
-      {{ $t('home.saveReload') }}
-    </p>
-    <router-link to="/vueTemplateIntro" class="desc-link">{{
-      $t('home.wlkVueTemplateIntro')
-    }}</router-link>
-    <a class="waves-effect waves-light btn">button</a>
-    <div style="display:none;">{{ deviceInfo }}</div>
+
+    <main class="body">
+      <!-- 123456 -->
+      <router-view></router-view>
+    </main>
+    <footer class="page-footer navbar">
+      <div 
+        class="tab waves-effect waves-light" 
+        v-for="tab of tabbar" 
+        :key="tab.index" 
+        :class="{'tab-active': tab.isTab===true && getTabIndex === tab.index}"
+        @click="tabClick(tab)"
+      >
+          <i class="material-icons">{{tab.icon}}</i>
+          <span class="tab-text">{{tab.text}}</span>
+      </div>
+    </footer> 
   </div>
+  
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import '@/common/css/index.less';
+import { mapState, mapActions, mapGetters} from 'vuex';
 
 export default {
   data() {
-    return {};
+    return {
+      tabbar: [
+        {index: 1, text:'首页', icon:'apps', path:'/index', name: 'index', isTab: true},
+        {index: 2, text:'挂失', icon:'close', path:'/lost', name: 'lost', isTab: true},
+        {index: 3, text:'发帖', icon:'add_circle', path:'/post', name: 'post', isTab: false},
+        {index: 4, text:'招领', icon:'check', path:'/found', name: 'found', isTab: true},
+        {index: 5, text:'我的', icon:'person', path:'/me', name: 'me', isTab: true},
+      ]
+    };
   },
   created() {
     window.HWH5.navTitle({ title: this.$i18n.t('common.title') });
-    this.getDeviceInfo();
+    // this.getDeviceInfo();
   },
   computed: {
-    ...mapState(['deviceInfo'])
+    ...mapGetters(['getTabIndex'])
   },
   methods: {
-    ...mapActions(['getDeviceInfo'])
+    ...mapActions(['switchTab']),
+    tabClick(tab){
+      this.$router.push({name: tab.name, params:{setid:111222}});
+      if (tab.index === 3 || tab.index === this.getTabIndex) {
+        console.log('nothing');
+        return;
+      }
+      // this.switchTab(tab.index);
+    }
   }
 };
 </script>
 
+
 <style lang="less" scoped>
+// @import '../common/css/index.less';
+// @black: black;
 .App {
-  padding: 10px;
-
-  .App-logo {
-    margin: 20px 0;
-    text-align: center;
+  // padding: 10px;
+  .body{
+    margin-bottom: 55px;
   }
 
-  .App-header {
-    height: 90px;
-    text-align: center;
-  }
+  .navbar{
+    position: fixed;
+    padding: 0px !important;
+    height: 55px;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .App-title {
-    margin-bottom: 30px;
-    font-size: 1.5em;
-    text-align: center;
-  }
+    .tab{
+      width: 20%;
+      height: 100%;
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      justify-content: center;
+      background-color: var(--theme-color-bg);
+      color: var(--theme-color-text);
 
-  .App-intro {
-    margin-bottom: 10px;
-    // font-size: large;
-    text-align: center;
-  }
-
-  .desc-link {
-    display: block;
-    line-height: 2.2em;
-    margin: 0 auto;
-
-    color: #2b88e6;
-    font-size: 14px;
-    text-align: center;
-  }
-  code {
-    padding: 2px 4px;
-    color: #c0341d;
-    background-color: #fbe5e1;
-    border-radius: 4px;
-  }
-
-  .develop-doc {
-    h3 {
-      margin-bottom: 5px;
+      .tab-text{
+        font-size: x-small;
+      }
     }
-
-    ul {
-      list-style: circle;
-      padding-left: 30px;
-    }
-
-    li {
-      margin-bottom: 5px;
-      color: #2b88e6;
-      cursor: pointer;
+    .tab-active{
+      background-color: var(--theme-color-deepened);
     }
   }
+  // .App-logo {
+  //   margin: 20px 0;
+  //   text-align: center;
+  // }
+
+  // .App-header {
+  //   height: 90px;
+  //   text-align: center;
+  // }
+
+  // .App-title {
+  //   margin-bottom: 30px;
+  //   font-size: 1.5em;
+  //   text-align: center;
+  // }
+
+  // .App-intro {
+  //   margin-bottom: 10px;
+  //   // font-size: large;
+  //   text-align: center;
+  // }
+
+  // .desc-link {
+  //   display: block;
+  //   line-height: 2.2em;
+  //   margin: 0 auto;
+
+  //   color: #2b88e6;
+  //   font-size: 14px;
+  //   text-align: center;
+  // }
+  // code {
+  //   padding: 2px 4px;
+  //   color: #c0341d;
+  //   background-color: #fbe5e1;
+  //   border-radius: 4px;
+  // }
+
+  // .develop-doc {
+  //   h3 {
+  //     margin-bottom: 5px;
+  //   }
+
+  //   ul {
+  //     list-style: circle;
+  //     padding-left: 30px;
+  //   }
+
+  //   li {
+  //     margin-bottom: 5px;
+  //     color: #2b88e6;
+  //     cursor: pointer;
+  //   }
+  // }
+
+
 }
+
+
 </style>

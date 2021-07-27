@@ -2,6 +2,12 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from '@/views/Home.vue';
+import Index from '@/views/tabPages/Index.vue';
+import Lost from '@/views/tabPages/Lost.vue';
+import Found from '@/views/tabPages/Found.vue';
+import Me from '@/views/tabPages/Me.vue';
+import PostPage from '@/views/Post.vue';
+
 
 Vue.use(VueRouter);
 
@@ -24,7 +30,35 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    redirect: '/index',
+    component: Home,
+    children: [
+      {
+        path: '/index',
+        name: 'index',
+        component: Index,
+      },
+      {
+        path: '/lost',
+        name: 'lost',
+        component: Lost 
+      },
+      {
+        path: '/found',
+        name: 'found',
+        component: Found 
+      },
+      {
+        path: '/me',
+        name: 'me',
+        component: Me 
+      },
+    ]
+  },
+  {
+    path: '/post',
+    name: 'post',
+    component: PostPage,
   },
   {
     path: '/vueTemplateIntro',

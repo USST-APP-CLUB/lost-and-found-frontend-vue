@@ -5,9 +5,35 @@ import store from '@/store';
 import router from '@/router';
 import getLang from './utils/getLang';
 import '@/assert/css/materialize.min.css'
+import '@/assert/css/icon.css'
 import '@/assert/js/materialize.min.js'
+import '@/common/css/global.css'
+// import '@/common/css/index.less';
 
-function init(i18n) {
+
+
+
+async function init(i18n) {
+  // await HWH5.getDeviceInfo().then((data) => {
+  //   store.dispatch('pageHeader/setStatusBarHeight', data.statusBarHeight)
+  // })
+  // HWH5.addEventListener({
+  //   type: 'back',
+  //   func: () => {
+  //     HWH5.close().catch(error => {
+  //       console.log('关闭webview异常', error);
+  //     });
+  //     return false;
+  //   }
+  // }).catch(error => {
+  //   console.log('监听事件发生异常', error);
+  // });
+  await HWH5.getMenuButtonBoundingClientRect().then((data) => {
+    console.log(data);
+    store.dispatch('pageHeader/setHeadNavHeight', data.bottom + 10);
+    store.dispatch('pageHeader/setHeadContentOffset', data.top);
+    store.dispatch('pageHeader/setHeadContentHeight', data.height);
+  });
   return new Vue({
     el: '#app',
     i18n,

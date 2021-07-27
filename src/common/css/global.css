@@ -1,0 +1,18 @@
+/*定义global.css作为全局css，在main.js中全局引入。*/
+/*采用css变量*/
+
+:root {
+    --theme-color-bg: #ee6e73;
+    --theme-color-text: white;
+    --theme-color-deepened: #ea454b;
+    --page-header-color: #DF696E;
+    /* --theme-color: #111111; */
+}
+
+
+/** 上文中的css变量一定要定义在此处，如果定义在less文件中，需要加装less loader才能显示。
+  * 下面的样式类写在此处或者less文件中均可 
+  * 此处写在这里是为了将自定义样式统一抽离
+  */
+
+  

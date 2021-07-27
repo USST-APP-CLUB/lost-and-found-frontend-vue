@@ -6,12 +6,19 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'app',
   data() {
     return {};
   },
+  methods: {
+    ...mapActions('pageHeader' ,['setStatusBarHeight', 'setHeadNavHeight', 'setHeadContentHeight']),
+    ...mapActions(['switchTab']),
+    // ...mapActions('StatusBar' ,['setStatusBarHeight']),
+  },
   created() {  
+    this.switchTab(1);
   }
 };
 </script>

@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-  import '../common/css/index.less';
+  // import '../common/css/index.less';
   export default {
     data() {
       return {};

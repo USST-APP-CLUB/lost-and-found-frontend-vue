@@ -1,4 +1,34 @@
 # 使用VUE模板开发
+
+AUI实在太拉了，所以还是用原模板好了。。。
+
+为了让样式更多样化一些，引入第三方组件库。本想引入vuetify的，但是失败了，懒得试element ui了。直接加css组件库，避免多余的配置。
+
+**css 组件库 materializecss 使用方法：**
+1. 首先下载组件库文件。（据说CDN也可以，但没试过）
+
+> 下载地址 https://materializecss.com/getting-started.html 文档也在这里看
+
+2. 将文件引入项目
+
+- 创建文件夹`src/assert/js` 和 文件夹 `src/assert/css`。
+- 在下载好的文件中提取`materialize.min.css`和`materialize.min.js`，添加到上述文件夹中
+- 在main.js中引入。添加 `import '@/assert/css/materialize.min.css'` 和 `import '@/assert/css/materialize.min.js'`
+- **特别重要** 在`materialize.min.js` 首行前添加注释 `/* eslint-disable */` 以规避eslint严格模式的检查，防止打包失败
+
+3. 引入google的material design icon
+
+- 参照 https://materializecss.com/icons.html 教程，向`index.html`添加link标签，但是失败了。。。
+- **开始“曲线救国”** 在`src/assert/css`中建立`icon.css`文件，将 https://fonts.googleapis.com/icon?family=Material+Icons 中的内容复制到icon.css文件中去。
+- 在`main.js`中引入`icon.css`文件。与第二步类似。`import '@/assert/css/icon.css'`
+- google material icon 网站挂靠在google.com域名下，所以无法正常访问到，更多图标可以参考 https://blog.csdn.net/boywcx/article/details/85051967
+
+4. 定义全局的css样式
+- 项目封装了全局less样式`index.less`，置于`src/common/css`文件夹下。
+- less样式若要全局引入，需要安装并配置less-loader，否则需要每个页面单独引入，不方便。
+- 定义全局css文件`src/common/css/global.css`，借助css3的特性（css变量）实现全局样式（主要是颜色主题）调控。
+
+
 -----------------------------
 
 ### 前言
