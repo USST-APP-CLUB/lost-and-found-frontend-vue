@@ -11,12 +11,6 @@ import '@/common/css/global.css' //to-delete
 import '@/common/css/index.less';
 import '@/common/css/global.less';
 
-// http://googlefonts.cn/ 可在这里找字体
-// import '@/assert/css/vuetify/font.css';
-// import '@/assert/css/vuetify/vuetify.min.css';
-// import '@/assert/js/vuetify/vuetify.min.js';
-
-
 
 async function init(i18n) {
   await Promise.all([
