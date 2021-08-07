@@ -4,31 +4,21 @@ import i18n from '@/i18n';
 import store from '@/store';
 import router from '@/router';
 import getLang from './utils/getLang';
-import '@/assert/css/materialize.min.css'
-import '@/assert/css/icon.css'
-import '@/assert/js/materialize.min.js'
+import '@/assert/css/materialize.min.css';
+import '@/assert/css/icon.css';
+import '@/assert/js/materialize.min.js';
 import '@/common/css/global.css' //to-delete
 import '@/common/css/index.less';
 import '@/common/css/global.less';
 
+// http://googlefonts.cn/ 可在这里找字体
+// import '@/assert/css/vuetify/font.css';
+// import '@/assert/css/vuetify/vuetify.min.css';
+// import '@/assert/js/vuetify/vuetify.min.js';
 
 
 
 async function init(i18n) {
-  // await HWH5.getDeviceInfo().then((data) => {
-  //   store.dispatch('pageHeader/setStatusBarHeight', data.statusBarHeight)
-  // })
-  // HWH5.addEventListener({
-  //   type: 'back',
-  //   func: () => {
-  //     HWH5.close().catch(error => {
-  //       console.log('关闭webview异常', error);
-  //     });
-  //     return false;
-  //   }
-  // }).catch(error => {
-  //   console.log('监听事件发生异常', error);
-  // });
   await Promise.all([
     HWH5.getMenuButtonBoundingClientRect().then((data) => {
       console.log(data);
