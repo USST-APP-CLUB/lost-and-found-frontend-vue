@@ -8,17 +8,19 @@
       <div slot="body" class="main">
         <div class="menu z-depth-1" v-for="(item, index) of router" :key="index">
             <div class="collection">
-              <a href="#!" class="collection-item" v-for="(itm, idx) of router[index].links" :key="idx">
+              <a href="#!" @click="goToPage(itm.path)" class="collection-item" v-for="(itm, idx) of router[index].links" :key="idx">
                 <span class="font-black">{{itm.name}}</span>
-                
-                <span class="badge">
-                  
+
+                <span v-if="itm.newMsg != 0" class="new badge">
+                  {{itm.newMsg}}
+                </span>
+                <span v-else class="badge">
                   <i class="material-icons">{{itm.icon}}</i>
                 </span>
               </a>
             </div>
         </div>
-
+        <about-us></about-us>
       </div>
     </page>
   </div>
@@ -28,41 +30,44 @@
 import { mapActions } from 'vuex';
 import Page from '@/components/Page' 
 import Avatar from '@/components/Avatar'
+import AboutUs from '@/components/AboutUs'
 export default {
   name: 'me',
   components:{
     Page,
-    Avatar
+    Avatar,
+    AboutUs
   },
   data(){
     return {
       router: {
         user: {
           groupName: 'user',
+          // 权限控制字段。
           links: [
-            {name:'挂失记录', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'招领记录', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'我的消息', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'个人报告', icon:'keyboard_arrow_right', path:'/index'},
+            {name:'挂失记录', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'招领记录', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'我的消息', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'个人报告', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
           ]
         },
-        common: {
-          groupName: 'common',
-          links: [
-            {name:'关于我们', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'建议反馈', icon:'keyboard_arrow_right', path:'/index'},
-          ]
-        },
+        // common: {
+        //   groupName: 'common',
+        //   links: [
+        //     {name:'关于我们', icon:'keyboard_arrow_right', path:'/about-us', newMsg: 0},
+        //     {name:'建议反馈', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+        //   ]
+        // },
         admin: {
           groupName: 'admin',
           links: [
-            {name:'公告管理', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'物品类型管理', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'用户数据查询', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'举报处理', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'申诉处理', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'建议处理', icon:'keyboard_arrow_right', path:'/index'},
-            {name:'禁言管理', icon:'keyboard_arrow_right', path:'/index'},
+            {name:'公告管理', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'物品类型管理', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'用户数据查询', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'举报处理', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'申诉处理', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'建议处理', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'禁言管理', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
           ]
         }
       }
