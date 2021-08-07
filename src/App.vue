@@ -13,11 +13,11 @@ export default {
     return {};
   },
   methods: {
-    ...mapActions('pageHeader' ,['setStatusBarHeight', 'setHeadNavHeight', 'setHeadContentHeight']),
+    // ...mapActions('pageHeader' ,['setStatusBarHeight', 'setHeadNavHeight', 'setHeadContentHeight']),
     ...mapActions(['switchTab']),
     // ...mapActions('StatusBar' ,['setStatusBarHeight']),
   },
-  created() {  
+  created() {
     this.switchTab(1);
   }
 };

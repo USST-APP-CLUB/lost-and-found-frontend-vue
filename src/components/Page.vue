@@ -1,23 +1,52 @@
 <template>
   <section class="page">
-    <header class="page-header">
-      <!-- <div class="status-bar" :style="{ height: getStatusBarHeight + 'px'}"></div> -->
-      <div :style="{ height: getHeadNavHeight + 'px'}">
-        <div :style="{paddingTop: getHeadContentOffset + 'px',lineHeight: getHeadContentHeight + 'px'}">
-          <slot v-if="headSlot" ></slot>
-          <div v-else class="header-content" >
+    <header class="page-header" :style="{height: getHeadNavHeight + 'px'}">
+      <div :style="{paddingTop: getHeadContentOffset + 'px',lineHeight: getHeadContentHeight + 'px'}">
+        <slot name="headbar">
+          <div class="header-content" >
             <i v-if="showBack" class="material-icons icon" @click="navBack">keyboard_arrow_left</i>
             <div class="header-title">
               <div>{{title}}</div>
             </div>
-            <!-- <span :style="{lineHeight: getHeadContentHeight + 'px'}">123</span> -->
           </div>
-        </div>
-        
+        </slot>
       </div>
     </header>
-    <div class="main" :style="{marginTop: getHeadNavHeight + 'px'}">
-      <slot name="body"></slot>
+    <div class="main" :style=" {marginTop: getHeadNavHeight + 'px'}">
+      <slot name="body" class="main-body">
+        <div>
+          <div>456</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>456</div>
+        </div>
+      </slot>
     </div>
   </section>
 </template>
@@ -26,7 +55,6 @@
 import { mapGetters } from 'vuex';
 export default {
   props: {
-    headSlot: Boolean,
     title: String,
     showBack: Boolean,
   },
@@ -52,12 +80,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.page{
+  height: 100%;
+}
 .page-header{
   position: fixed;
   top: 0;
   width: 100%;
   // background-color: var(--page-header-color);
   background-color: var(--theme-color-bg);
+  z-index: 100;
 }
 .header-content{
   padding-left: 10px;
@@ -77,6 +109,14 @@ export default {
     padding-left: 4px;
   }
 }
-
+.main{
+  // height: 100%;
+  // width: 100%;
+  overflow: hidden;
+  .main-body{
+    // height: 100%;
+      overflow: hidden;
+  }
+}
 
 </style>

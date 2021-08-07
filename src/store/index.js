@@ -5,6 +5,7 @@ import * as actions from './actions'
 import * as mutations from './mutations'
 
 import PageHeader from './modules/PageHeader/index';
+import AppParams from './modules/AppParams/index';
 
 Vue.use(Vuex);
 
@@ -19,7 +20,8 @@ const store = new Vuex.Store({
   actions,  // 数据的异步操作
   mutations,  // 处理数据的唯一途径，state的改变或赋值只能在这里
   modules: {
-    pageHeader: PageHeader
+    pageHeader: PageHeader,
+    appParams: AppParams
   }
 })
 

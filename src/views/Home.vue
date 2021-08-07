@@ -77,6 +77,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 100;
 
     .tab{
       width: 20%;
@@ -87,7 +88,7 @@ export default {
       justify-content: center;
       background-color: var(--theme-color-bg);
       color: var(--theme-color-text);
-
+      
       .tab-text{
         font-size: x-small;
       }

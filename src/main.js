@@ -7,8 +7,9 @@ import getLang from './utils/getLang';
 import '@/assert/css/materialize.min.css'
 import '@/assert/css/icon.css'
 import '@/assert/js/materialize.min.js'
-import '@/common/css/global.css'
-// import '@/common/css/index.less';
+import '@/common/css/global.css' //to-delete
+import '@/common/css/index.less';
+import '@/common/css/global.less';
 
 
 
@@ -28,12 +29,21 @@ async function init(i18n) {
   // }).catch(error => {
   //   console.log('监听事件发生异常', error);
   // });
-  await HWH5.getMenuButtonBoundingClientRect().then((data) => {
-    console.log(data);
-    store.dispatch('pageHeader/setHeadNavHeight', data.bottom + 10);
-    store.dispatch('pageHeader/setHeadContentOffset', data.top);
-    store.dispatch('pageHeader/setHeadContentHeight', data.height);
-  });
+  await Promise.all([
+    HWH5.getMenuButtonBoundingClientRect().then((data) => {
+      console.log(data);
+      store.dispatch('pageHeader/setHeadNavHeight', data.bottom + 10);
+      store.dispatch('pageHeader/setHeadContentOffset', data.top);
+      store.dispatch('pageHeader/setHeadContentHeight', data.height);
+    }),
+    HWH5.getAppInfo().then(data => {   
+      console.log(data); 
+      
+    }).catch(error => {   
+      console.log('获取APP信息异常', error); 
+    })
+  ])
+  // console.log(less);
   return new Vue({
     el: '#app',
     i18n,
