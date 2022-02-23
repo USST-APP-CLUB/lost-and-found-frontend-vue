@@ -1,21 +1,44 @@
 <template>
-  <section class="page">
-    <header class="page-header" :style="{height: getHeadNavHeight + 'px'}">
+  <section class="h-100">
+    <header class="position-fixed top-0 w-100 theme-color-bg" :style="{height: getHeadNavHeight + 'px', zIndex: 100}">
       <div :style="{paddingTop: getHeadContentOffset + 'px',lineHeight: getHeadContentHeight + 'px'}">
         <slot name="headbar">
-          <div class="header-content" >
-            <i v-if="showBack" class="material-icons icon" @click="navBack">keyboard_arrow_left</i>
-            <div class="header-title">
+          <!-- slot 默认内容 -->
+          <div class="ps-3 d-flex align-items-center  text-white" >
+            <!-- 左上角返回图标 -->
+            <i v-if="showBack" class="material-icons icon " @click="navBack">keyboard_arrow_left</i>
+            <!-- 顶部导航文字 -->
+            <div class="fs-5 ">
               <div>{{title}}</div>
             </div>
+
           </div>
         </slot>
       </div>
     </header>
-    <div class="main" :style=" {marginTop: getHeadNavHeight + 'px'}">
-      <slot name="body" class="main-body">
+
+    <div class="main" :style=" {marginTop: getHeadNavHeight + 'px'}" :class="{ 'p-2': padding }">
+      <slot name="body" >
         <div>
           <div>456</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
           <div>123</div>
           <div>123</div>
           <div>123</div>
@@ -57,6 +80,10 @@ export default {
   props: {
     title: String,
     showBack: Boolean,
+    padding: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -64,7 +91,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('pageHeader',['getHeadNavHeight', 'getHeadContentOffset', 'getHeadContentHeight'])
+    ...mapGetters('systemInfo',['getHeadNavHeight', 'getHeadContentOffset', 'getHeadContentHeight'])
   },
   methods: {
     navBack(){
@@ -80,43 +107,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.page{
-  height: 100%;
-}
-.page-header{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  // background-color: var(--page-header-color);
-  background-color: var(--theme-color-bg);
-  z-index: 100;
-}
-.header-content{
-  padding-left: 10px;
-  width: 100%;
-  color: var(--theme-color-text);
-  display: flex;
-  align-items: center;
-  // justify-content: center;
-  .icon{
-    font-size: 30px;
-  }
 
-  .header-title{
-    // position: absolute;
-    // left: calc(50% - 40px);
-    font-size: 16px;
-    padding-left: 4px;
-  }
-}
-.main{
-  // height: 100%;
-  // width: 100%;
-  overflow: hidden;
-  .main-body{
-    // height: 100%;
-      overflow: hidden;
-  }
-}
 
 </style>

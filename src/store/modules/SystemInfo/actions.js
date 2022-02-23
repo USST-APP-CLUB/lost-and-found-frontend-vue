@@ -13,3 +13,7 @@ export const setHeadContentHeight = ({commit}, headContentHeight) => {
 export const setHeadContentOffset = ({commit}, headContentOffset) => {
     commit('updateHeadContentOffset', headContentOffset);
 }
+
+export const setScreenWidth = ({commit}, screenWidth) => {
+    commit('updateScreenWidth', screenWidth);
+}

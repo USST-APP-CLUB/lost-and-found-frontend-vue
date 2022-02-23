@@ -13,7 +13,7 @@ export default {
     return {};
   },
   methods: {
-    // ...mapActions('pageHeader' ,['setStatusBarHeight', 'setHeadNavHeight', 'setHeadContentHeight']),
+    // ...mapActions('systemInfo' ,['setStatusBarHeight', 'setHeadNavHeight', 'setHeadContentHeight']),
     ...mapActions(['switchTab']),
     // ...mapActions('StatusBar' ,['setStatusBarHeight']),
   },

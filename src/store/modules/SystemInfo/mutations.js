@@ -13,3 +13,8 @@ export const updateHeadContentHeight = (state, headContentHeight) => {
 export const updateHeadContentOffset = (state, headContentOffset) => {
     state.headContentOffset = headContentOffset;
 }
+
+export const updateScreenWidth = (state, screenWidth) => {
+    state.screenWidth = screenWidth;
+}
+

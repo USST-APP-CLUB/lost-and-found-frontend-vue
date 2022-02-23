@@ -7,6 +7,7 @@ const state = {
   headNevHeight: 0,
   headContentOffset: 0,
   headContentHeight: 0,
+  screenWidth: 0,
 }
 
 

@@ -1,26 +1,27 @@
 <template>
   <div>
-    <page head-slot>
-      <div slot="headbar" class="headbar-flex">
-        <avatar class="my-avatar" size="32" ></avatar>
-        <span class="theme-color-text nickname">大碗牢饭</span>
+    <page head-slot padding>
+      <div slot="headbar" class="d-flex align-items-center">
+        <avatar class="px-2" size="32" ></avatar>
+        <span class="fs-5 theme-color-text">大碗牢饭</span>
       </div>
       <div slot="body" class="main">
-        <div class="menu z-depth-1" v-for="(item, index) of router" :key="index">
-            <div class="collection">
-              <a href="#!" @click="goToPage(itm.path)" class="collection-item" v-for="(itm, idx) of router[index].links" :key="idx">
-                <span class="font-black">{{itm.name}}</span>
-
-                <span v-if="itm.newMsg != 0" class="new badge">
-                  {{itm.newMsg}}
-                </span>
-                <span v-else class="badge">
-                  <i class="material-icons">{{itm.icon}}</i>
-                </span>
-              </a>
-            </div>
+        <div v-for="(item, index) of router" :key="index">
+          <div class="list-group mb-3 shadow">
+            <button 
+              type="button" class="list-group-item list-group-item-action d-flex align-items-center" 
+              v-for="(itm, idx) of router[index].links" :key="idx"
+              @click="goToPage(itm.path)"
+            > 
+                <span class="text-dark lh-lg">{{itm.name}}</span>
+                <div class="ms-auto me-1">
+                  <span v-if="itm.newMsg" class="badge bg-primary rounded-pill text-light">{{itm.newMsg}}</span>
+                  <i v-else class="material-icons">{{itm.icon}}</i>
+                </div>
+            </button>
+          </div>
         </div>
-        <about-us></about-us>
+        <about-us author="Sunforge"></about-us>
       </div>
     </page>
   </div>
@@ -45,7 +46,7 @@ export default {
           groupName: 'user',
           // 权限控制字段。
           links: [
-            {name:'挂失记录', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
+            {name:'挂失记录', icon:'keyboard_arrow_right', path:'/index', newMsg: 1},
             {name:'招领记录', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
             {name:'我的消息', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
             {name:'个人报告', icon:'keyboard_arrow_right', path:'/index', newMsg: 0},
@@ -113,7 +114,7 @@ export default {
   }
 }
 .main{
-  padding: 8px;
+  
   .menu{
     margin-bottom: 8px;
 
